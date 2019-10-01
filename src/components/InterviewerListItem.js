@@ -6,9 +6,9 @@
 // ? setInterviewer:function - sets the interviewer upon selection
 
 import React from "react";
+import classnames from 'classnames';
 import "components/InterviewerListItem.scss";
 
-import classnames from 'classnames';
 
 export default function InterviewerListItem(props) {
   console.log(props)
@@ -17,19 +17,19 @@ export default function InterviewerListItem(props) {
   });
   const displayName = function(props) {
     if (props.selected) {
-      console.log(props)
+      console.log('within displayName', props)
       return props.name;
     }
   }
 
   return (
-  <li className={interviewerClass}>
+  <li className={interviewerClass} onClick={(event) => props.setInterviewer(props.name)}>
     <img
       className="interviewers__item-image"
       src={props.avatar}
       alt={props.name}
     />
-   {displayName(props)}
+    {displayName(props)}
   </li>
   );
 }
