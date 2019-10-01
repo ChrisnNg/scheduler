@@ -9,12 +9,6 @@ import React from "react";
 import classnames from 'classnames';
 import "components/InterviewerListItem.scss";
 
-const displayName = function(props) {
-  if (props.selected) {
-    console.log('within displayName', props)
-    return props.name;
-  }
-}
 
 export default function InterviewerListItem(props) {
   console.log(props)
@@ -25,13 +19,13 @@ export default function InterviewerListItem(props) {
 
 
   return (
-  <li className={interviewerClass} onClick={(event) => props.setInterviewer(props.key)}>
+  <li className={interviewerClass} onClick={props.setInterviewer}>
     <img
       className="interviewers__item-image"
       src={props.avatar}
       alt={props.name}
     />
-    {displayName(props)}
+    {props.selected && props.name}
   </li>
   );
 }
