@@ -9,21 +9,23 @@ import React from "react";
 import classnames from 'classnames';
 import "components/InterviewerListItem.scss";
 
+const displayName = function(props) {
+  if (props.selected) {
+    console.log('within displayName', props)
+    return props.name;
+  }
+}
 
 export default function InterviewerListItem(props) {
   console.log(props)
+  
   const interviewerClass = classnames("interviewers__item", {
     "interviewers__item--selected": props.selected,
   });
-  const displayName = function(props) {
-    if (props.selected) {
-      console.log('within displayName', props)
-      return props.name;
-    }
-  }
+
 
   return (
-  <li className={interviewerClass} onClick={(event) => props.setInterviewer(props.name)}>
+  <li className={interviewerClass} onClick={(event) => props.setInterviewer(props.key)}>
     <img
       className="interviewers__item-image"
       src={props.avatar}
