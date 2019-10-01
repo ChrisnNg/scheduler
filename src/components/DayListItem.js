@@ -27,6 +27,3 @@ export default function DayListItem(props) {
     </li>
   );
 }
-
-// TODO: Write a function called formatSpots in the DayListItem component that will format the props.spots to make our tests pass.
-
