@@ -142,8 +142,8 @@ storiesOf("InterviewerList", module)
   .add("Preselected", () => (
     <InterviewerList
       interviewers={interviewers}
-      interviewer={3}
-      setInterviewer={action("setInterviewer")}
+      value={3}
+      onChange={action("setInterviewer")}
     />
   ));
 
@@ -190,19 +190,19 @@ storiesOf("InterviewerList", module)
       onClose={action("onClose")}
       />
     ))
-    .add("Edit", () => (
-      <Form
-      name="Chris Ng"
-      interviewers={interviewers}
-      interviewer={3}
-      onSave={action("onSave")}
-      onCancel={action("onCancel")}
-      />
-    ))
-    .add("Create", () => (
-      <Form
-      interviewers={interviewers}
-      onSave={action("onSave")}
-      onCancel={action("onCancel")}
-      />
-    ))
+    // .add("Create", () => (
+    //   <Form
+    //   interviewers={interviewers}
+    //   onSave={action("onSave")}
+    //   onCancel={action("onCancel")}
+    //   />
+    // ))
+    // .add("Edit", () => (
+    //   <Form
+    //   name="Archie Cohen"
+    //   interviewers={interviewers}
+    //   interviewer={3}
+    //   onSave={action("onSave")}
+    //   onCancel={action("onCancel")}
+    //   />
+    // ))
