@@ -190,19 +190,19 @@ storiesOf("InterviewerList", module)
       onClose={action("onClose")}
       />
     ))
-    // .add("Create", () => (
-    //   <Form
-    //   interviewers={interviewers}
-    //   onSave={action("onSave")}
-    //   onCancel={action("onCancel")}
-    //   />
-    // ))
-    // .add("Edit", () => (
-    //   <Form
-    //   name="Archie Cohen"
-    //   interviewers={interviewers}
-    //   interviewer={3}
-    //   onSave={action("onSave")}
-    //   onCancel={action("onCancel")}
-    //   />
-    // ))
+    .add("Create", () => (
+      <Form
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+      />
+    ))
+    .add("Edit", () => (
+      <Form
+      name="Archie Cohen"
+      interviewers={interviewers}
+      interviewer={3}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+      />
+    ))
