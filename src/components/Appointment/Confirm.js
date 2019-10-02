@@ -5,7 +5,6 @@ import Button from "components/Button"
 
 
 export default function Confirm(props) {
-  console.log(props)
   return (
   <main className="appointment__card appointment__card--confirm">
     <h1 className="text--semi-bold">{props.message}</h1>
