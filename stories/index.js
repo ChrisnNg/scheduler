@@ -15,12 +15,13 @@ import InterviewerListItem from "components/InterviewerListItem.js";
 
 import InterviewerList from "components/InterviewerList.js"
 
-import Appointment from "components/Appointment"
+import Appointment from "components/Appointment/index"
 
 import Header from "components/Appointment/Header"
 
 import Empty from "components/Appointment/Empty"
 
+import Show from "components/Appointment/Show"
 
 
 
@@ -157,3 +158,11 @@ storiesOf("InterviewerList", module)
     <Empty 
     onAdd={action("onAdd")}
     />))
+    .add("Show", ()=> (
+      <Show
+      student="Lydia Miller-Jones"
+      interviewer="Sylvia Palmer"
+      onEdit={action("onEdit")}
+      onDelete={action("onDelete")}
+      />
+    ))
