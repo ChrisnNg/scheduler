@@ -3,7 +3,7 @@ import axios from "axios"
 import "components/Application.scss";
 import DayList from "components/DayList.js";
 import Appointment from "components/Appointment/index";
-import getAppointmentsForDay from "components/helpers/selectors"
+import getAppointmentsForDay from "helpers/selectors"
 
 
 
@@ -31,7 +31,7 @@ export default function Application(props) {
   }, [])
 
 
-
+  let appointments = getAppointmentsForDay(state, state.day)
 
 
 
