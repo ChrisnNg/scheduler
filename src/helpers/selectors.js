@@ -1,4 +1,3 @@
-
 export function getAppointmentsForDay(state, day) {
   const filteredDays = state.days.filter(days => days.name === day)
   const result = [];
@@ -33,26 +32,21 @@ export function getInterview(state, interview) {
   }
 }
 
-// export function getInterview(state, interview) {
-//   let result = {};
-//     for (let keys in state.appointments) {
-//       if (state.appointments[keys].interview) {
-//         console.log("getInterview", state.appointments[keys].interview)
-//         result = {
-//           "student": state.appointments[keys].interview.student,
-//           "interviewer": {  
-//             "id": state.appointments[keys].interviewer,
-//             "name": state.interviewers[state.appointments[keys].interviewer].name,
-//             "avatar": state.interviewers[state.appointments[keys].interviewer].avatar
-//           }
-//         }
-  
-//       } else {
-//         console.log(`null detected at key=${keys}`)
-//         return null
-//       }
-//     }
-//     console.log('getinterview result', result)
-//     return result
-//   }
-  
+export function getInterviewersForDay(state, day) {
+  const filteredDays = state.days.filter(days => days.name === day)
+  const result = [];
+  if (filteredDays.length === 0) {
+    return result;
+  }
+
+  const dayInterviewers = filteredDays[0].interviewers;
+
+  for (let keys in state.interviewers) {
+    for(let index of dayInterviewers) {
+      if (state.interviewers[keys].id === index) {
+        result.push(state.interviewers[keys])
+      }
+    }
+  }
+  return result;
+}
