@@ -1,4 +1,3 @@
-import { statements } from "@babel/template";
 
 export function getAppointmentsForDay(state, day) {
   const filteredDays = state.days.filter(days => days.name === day)
