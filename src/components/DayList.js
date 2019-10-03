@@ -8,7 +8,6 @@ import ReactDOM from "react-dom";
 // setDay:Function accepts the name of the day eg. "Monday", "Tuesday"
 
 export default function DayList(props) {
-  console.log("props for daylist", props)
   const days = props.days.map(day => {
     return (
       <DayListItem
