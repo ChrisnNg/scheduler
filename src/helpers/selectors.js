@@ -22,11 +22,9 @@ export function getInterview(state, interview) {
     return null;
   }
   let newInterview = {...interview}
-  console.log('newint', newInterview.interviewer)
   for(let keys in state.interviewers) {
     if (state.interviewers[keys].id === newInterview.interviewer) {
       newInterview.interviewer =  state.interviewers[keys]
-      console.log('newinterview result', newInterview)
       return newInterview;
     }
   }
