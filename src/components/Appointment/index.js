@@ -53,7 +53,7 @@ export default function Appointment(props) {
   function onEdit() {
     transition(EDIT)
   }
-console.log('props', props)
+
   return (
   <article className="appointment">
     <Header 
