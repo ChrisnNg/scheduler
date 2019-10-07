@@ -21,12 +21,13 @@ export default function useApplicationData(props) {
       case SET_APPLICATION_DATA:
         return { ...state, ...action.value };
       case SET_INTERVIEW: {
-        for (let index of state.days) {
+        let newState = { ...state };
+        for (let index of newState.days) {
           if (index.name === state.day) {
             index.spots += action.spot;
           }
         }
-        return { ...state, ...action.value };
+        return { ...newState, ...action.value };
       }
       default:
         throw new Error(
