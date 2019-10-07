@@ -23,7 +23,12 @@ export default function useApplicationData(props) {
       case SET_APPLICATION_DATA:
         return {...state, ...action.value}
       case SET_INTERVIEW: {
-        return {...state, ...action.value}
+        for(let index of state.days) {
+          if (index.name === state.day) {
+            index.spots += action.spot
+          }
+        }
+        return ({...state, ...action.value, })
       }
       default:
         throw new Error(
@@ -52,6 +57,10 @@ export default function useApplicationData(props) {
   }, [])
 
   function bookInterview(id, interview) {
+    let spot = -0.5;
+    if (state.appointments[id].interview) {
+      spot = 0;
+    }
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -63,7 +72,7 @@ export default function useApplicationData(props) {
     return Promise.resolve(axios.put(`/api/appointments/${id}`, {
       interview
     })
-      .then(() => dispatch({type: SET_INTERVIEW, value:{appointments}})))
+      .then(() => dispatch({type: SET_INTERVIEW, value:{appointments}, spot})))
   }
 
   function cancelInterview(id) {
@@ -77,7 +86,7 @@ export default function useApplicationData(props) {
     };
 
     return Promise.resolve(axios.delete(`/api/appointments/${id}`, null)
-      .then(() => dispatch({type: SET_INTERVIEW, value:{appointments}})))
+      .then(() => dispatch({type: SET_INTERVIEW, value:{appointments}, spot:0.5})))
   }
 
 
