@@ -1,5 +1,10 @@
 import React, { useReducer, useEffect } from "react";
 import axios from "axios";
+import reducer, {
+  SET_DAY,
+  SET_APPLICATION_DATA,
+  SET_INTERVIEW
+} from "reducers/application";
 // move the logic used to manage the state
 
 // Our useApplicationData Hook will return an object with four keys.
@@ -10,32 +15,6 @@ import axios from "axios";
 // The cancelInterview action makes an HTTP request and updates the local state.
 
 export default function useApplicationData(props) {
-  const SET_DAY = "SET_DAY";
-  const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
-  const SET_INTERVIEW = "SET_INTERVIEW";
-
-  function reducer(state, action) {
-    switch (action.type) {
-      case SET_DAY:
-        return { ...state, ...action.value };
-      case SET_APPLICATION_DATA:
-        return { ...state, ...action.value };
-      case SET_INTERVIEW: {
-        let newState = { ...state };
-        for (let index of newState.days) {
-          if (index.name === state.day) {
-            index.spots += action.spot;
-          }
-        }
-        return { ...newState, ...action.value };
-      }
-      default:
-        throw new Error(
-          `Tried to reduce with unsupported action type: ${action.type}`
-        );
-    }
-  }
-
   const [state, dispatch] = useReducer(reducer, {
     day: "Monday",
     days: [],
@@ -63,7 +42,7 @@ export default function useApplicationData(props) {
   }, []);
 
   function bookInterview(id, interview) {
-    let spot = -0.5;
+    let spot = -1;
     if (state.appointments[id].interview) {
       spot = 0;
     }
@@ -87,7 +66,7 @@ export default function useApplicationData(props) {
   }
 
   function cancelInterview(id) {
-    let spot = 0.5;
+    let spot = 1;
     const appointment = {
       ...state.appointments[id],
       interview: null
