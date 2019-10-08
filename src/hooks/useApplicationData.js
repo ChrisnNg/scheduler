@@ -87,6 +87,7 @@ export default function useApplicationData(props) {
   }
 
   function cancelInterview(id) {
+    let spot = 0.5;
     const appointment = {
       ...state.appointments[id],
       interview: null
@@ -97,11 +98,9 @@ export default function useApplicationData(props) {
     };
 
     return Promise.resolve(
-      axios
-        .delete(`/api/appointments/${id}`, null)
-        .then(() =>
-          dispatch({ type: SET_INTERVIEW, value: { appointments }, spot: 0.5 })
-        )
+      axios.delete(`/api/appointments/${id}`, null).then(() => {
+        dispatch({ type: SET_INTERVIEW, value: { appointments }, spot });
+      })
     );
   }
 

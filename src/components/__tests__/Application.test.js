@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 import {
   render,
   cleanup,
@@ -18,6 +18,7 @@ import {
 import Application from "components/Application.js";
 
 afterEach(cleanup);
+
 describe("Application", () => {
   it("defaults to Monday and changes the schedule when a new day is selected", async () => {
     const { getByText } = render(<Application />);
@@ -30,7 +31,7 @@ describe("Application", () => {
   });
 
   xit("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
-    const { container, debug } = render(<Application />);
+    const { container, unmount } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
@@ -59,7 +60,7 @@ describe("Application", () => {
 
   it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
     // 1. Render the Application.
-    const { container } = render(<Application />);
+    const { container, debug } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -81,7 +82,6 @@ describe("Application", () => {
 
     // 6. Check that the element with the text "Deleting" is displayed.
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
-
     // 7. Wait until the element with the "Add" button is displayed.
     await waitForElement(() => getByAltText(appointment, "Add"));
 
@@ -132,4 +132,13 @@ describe("Application", () => {
 
     expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
   });
+
+  it("shows the save error when failing to save an appointment", () => {
+    axios.put.mockRejectedValueOnce();
+  });
+
+  it("shows the delete error when failing to delete an existing appointment", () => {});
+  // axios.delete.mockRejectedValueOnce();
 });
+
+// each test modifying the state carries over to the next test and the next test starts with the modified state.
