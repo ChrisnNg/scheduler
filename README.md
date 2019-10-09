@@ -22,9 +22,7 @@ npm run storybook
 
 Follow the instructions and install the Scheduler API at [Scheduler API](https://github.com/lighthouse-labs/scheduler-api)
 
-```
-Give examples
-```
+After that is complete, make sure to run the API server with `npm start` while within the API directory. Please note that both of these must be up as the application counts on the API to contain the database it draws from!
 
 ### Installing
 
