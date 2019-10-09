@@ -1,57 +1,71 @@
 # Interview Scheduler
 
-A React.js based single-paged application with a persistent database to help schedule interviews.
-
-## Getting Started
-
-Install dependencies with `npm install`.
-
-#### Running Webpack Development Server
-
-```sh
-npm start
-```
-
-#### Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+A Single-paged application with a persistent database to help schedule interviews. Built with _React.js_ and tested with _Jest_, _Cypress_, and _Storybook_.
 
 ### Prerequisites
 
 Follow the instructions and install the Scheduler API at [Scheduler API](https://github.com/lighthouse-labs/scheduler-api)
 
-After that is complete, make sure to run the API server with `npm start` while within the API directory. Please note that both of these must be up as the application counts on the API to contain the database it draws from!
+After that is complete, while within the API directory, run `npm start` to boot up the API server. Please note that both the API server and the Webpack server must be up and running for proper access to the scheduler.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Begin by cloning the repository into your directory
 
 ```
-Give the example
+git clone git@github.com:ChrisnNg/scheduler.git
 ```
 
-And repeat
+Install dependencies with
 
 ```
-until finished
+`npm install`.
 ```
 
-## Running the tests
+With both the prerequisite done and the installation completed, you are now ready to start the server!
 
-#### Running Jest Test Framework
+## Starting the server
+
+Open up two terminals so you can have both servers running concurrently.
+
+#### Running Webpack Development Server
+
+While at the root directory, run-
+
+```sh
+npm start
+```
+
+#### Running scheduler-api (from the prerequsites)
+
+While within the root directory of the scheduler-api run-
+
+```sh
+npm start
+```
+
+With both servers on, you can now navigate to [Localhost](http://localhost:8000/) at port :8000 to see the scheduler!
+
+### Running the tests
+
+For developers who would like to expand upon the scheduler, we have created a set of tests so you can run your changes against it. Please read through the tests to understand what they test as you may have to update them if you change certain context the tests check for.
+
+##### Running Jest Test Framework
 
 ```sh
 npm test
 ```
 
-#### Running Cypress Test Framework
+##### Running Cypress Test Framework
 
 ```sh
 npm run cypress
+```
+
+##### Running Storybook Visual Testbed
+
+```sh
+npm run storybook
 ```
 
 ## Deployment
@@ -89,5 +103,5 @@ To be written-
 
 ## Acknowledgments
 
-- [Jensen](https://github.com/jensen) For his Scheduler-Api.
+- [Jensen](https://github.com/jensen) For his [Scheduler-Api](https://github.com/lighthouse-labs/scheduler-api) and [Scheduler](https://github.com/lighthouse-labs/scheduler) base.
 - [Lighthouse Labs](https://www.lighthouselabs.ca/) for guiding and mentoring me through the process.
