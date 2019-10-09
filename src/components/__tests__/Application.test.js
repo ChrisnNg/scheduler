@@ -31,7 +31,7 @@ describe("Application", () => {
   });
 
   xit("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
-    const { container, unmount } = render(<Application />);
+    const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
@@ -60,7 +60,7 @@ describe("Application", () => {
 
   it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -134,7 +134,7 @@ describe("Application", () => {
   });
 
   it("shows the save error when failing to save an appointment", async () => {
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     axios.put.mockRejectedValueOnce();
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -167,8 +167,37 @@ describe("Application", () => {
     expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
   });
 
-  it("shows the delete error when failing to delete an existing appointment", () => {});
-  // axios.delete.mockRejectedValueOnce();
+  it("shows the delete error when failing to delete an existing appointment", async () => {
+    const { container, debug } = render(<Application />);
+    axios.delete.mockRejectedValueOnce();
+
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+    );
+
+    fireEvent.click(queryByAltText(appointment, "Delete"));
+
+    expect(
+      getByText(appointment, "Are you sure you would like to delete?")
+    ).toBeInTheDocument();
+
+    fireEvent.click(queryByText(appointment, "Confirm"));
+
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+
+    await waitForElement(() =>
+      getByText(appointment, "Could not cancel appointment.")
+    );
+    debug();
+
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
+
+    expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
+  });
 });
 
-// each test modifying the state carries over to the next test and the next test starts with the modified state.
+// Please note that each test modifying the state carries over to the next test and the next test starts with the modified state.
