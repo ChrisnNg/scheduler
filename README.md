@@ -2,6 +2,17 @@
 
 A Single-paged application with a persistent database to help schedule interviews. Built with _React.js_ and tested with _Jest_, _Cypress_, and _Storybook_.
 
+## Final Product
+
+Saving a new interview
+![saveNewInterview](https://github.com/ChrisnNg/scheduler/blob/master/public/gifs/saveNewInterview.gif?raw=true)
+
+Deleting a interview
+![deleteInterview](https://github.com/ChrisnNg/scheduler/blob/master/public/gifs/deleteInterview.gif?raw=true)
+
+Changing the day and then editing a existing interview
+![changeDayandEdit](https://github.com/ChrisnNg/scheduler/blob/master/public/gifs/changeDayandEdit.gif?raw=true)
+
 ### Prerequisites
 
 Follow the instructions and install the Scheduler API at [Scheduler API](https://github.com/lighthouse-labs/scheduler-api)
