@@ -6,11 +6,9 @@ import {
   waitForElement,
   fireEvent,
   getByText,
-  prettyDOM,
   getAllByTestId,
   getByAltText,
   getByPlaceholderText,
-  waitForElementToBeRemoved,
   queryByAltText,
   queryByText
 } from "@testing-library/react";

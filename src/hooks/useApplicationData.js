@@ -1,18 +1,10 @@
-import React, { useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import axios from "axios";
 import reducer, {
   SET_DAY,
   SET_APPLICATION_DATA,
   SET_INTERVIEW
 } from "reducers/application";
-// move the logic used to manage the state
-
-// Our useApplicationData Hook will return an object with four keys.
-
-// The state object will maintain the same structure.
-// The setDay action can be used to set the current day.
-// The bookInterview action makes an HTTP request and updates the local state.
-// The cancelInterview action makes an HTTP request and updates the local state.
 
 export default function useApplicationData(props) {
   const [state, dispatch] = useReducer(reducer, {

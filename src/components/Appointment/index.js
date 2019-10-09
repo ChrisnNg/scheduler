@@ -101,11 +101,3 @@ export default function Appointment(props) {
     </article>
   );
 }
-// ? The Form component should take the following props:
-
-// ? name:String
-// ? interviewers:Array
-// ? interviewer:Number
-// ? onSave:Function
-// ? onCancel:Function
-// {props.cancelInterview(props.id)}
