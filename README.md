@@ -49,7 +49,7 @@ npm start
 
 #### Running scheduler-api (from the prerequsites)
 
-While within the root directory of the scheduler-api run-
+If you have not already done so; while within the root directory of the scheduler-api run-
 
 ```sh
 npm start
