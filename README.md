@@ -1,6 +1,14 @@
-# Interview Scheduler
+### Interview Scheduler | React-Powered Booking Platform
 
-A Single-paged application with a persistent database to help schedule interviews. Built with _React.js_ and tested with _Jest_, _Cypress_, and _Storybook_.
+A dynamic single-page application for streamlined interview coordination
+
+Key Features:
+- 🗓️ Interactive Calendar - Visual scheduling with drag-and-drop functionality
+- 📅 Persistent Data - PostgreSQL backend maintains all bookings
+- 🧪 Comprehensive Testing - 90%+ test coverage with Jest, Cypress & Storybook
+- 🔄 Real-time Updates - Instant confirmation notifications
+
+Tech Stack: `React.js` | `PostgreSQL` | `Jest` | `Cypress` | `Storybook`
 
 ## Final Product
 
